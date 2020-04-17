@@ -1,0 +1,14 @@
+@import "../../variables.scss";
+
+nav{
+    div{
+        ul{
+            li{
+                a:hover{
+                    color: $brand-color-1;
+                }
+                
+            }
+        }
+    }
+}

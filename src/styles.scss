@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "_variables.scss";
+
+
+.brand-color-table{
+  color: $brand-color-1;
+}
+
+
+.top-offSet{
+    margin-top: 70px
+}
