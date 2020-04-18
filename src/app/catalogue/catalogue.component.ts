@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Textbook } from '../interfaces/textbook';
-import { TextbooksService } from '../server/textbooks.service';
+import { TextbooksService } from '../backend/textbooks.service';
 
 @Component({
   selector: 'app-catalogue',

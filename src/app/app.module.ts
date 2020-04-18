@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RequestComponent } from './request/request.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { FormsModule } from '@angular/forms';
+import { ThanksComponent } from './thanks/thanks.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     RequestComponent,
     CatalogueComponent,
+    ThanksComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

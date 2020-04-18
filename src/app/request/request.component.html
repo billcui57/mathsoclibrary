@@ -1,1 +1,33 @@
-<p>request works!</p>
+<div class="container-fluid text-center top-offSet">
+    <h1 class="display-4 brand-color-text">
+        Request an addition to our catalogue!
+    </h1>
+    <div class="container">
+        <div class="row mt-3"></div>
+        <div class="row">
+            <div class="col">
+                <form (ngSubmit)="onSubmit()" #requestForm="ngForm">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1" class="brand-color-text">Book title</label>
+                        <input type="text" class = "form-control" [ngClass] = "{'is-valid': title.valid, 'is-invalid': title.invalid}"          id="title" required [(ngModel)]="request.title"
+                            name="title" #title="ngModel" />
+                       
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput2" class="brand-color-text">Author</label>
+                        <input type="text" class="form-control" [ngClass] = "{'is-valid': author.valid, 'is-invalid': author.invalid}" id="author" required [(ngModel)]="request.author"
+                            name="author" #author="ngModel" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput3" class="brand-color-text">Edition</label>
+                        <input type="text" class="form-control"  [ngClass] = "{'is-valid': edition.valid, 'is-invalid': edition.invalid}" id="edition" required [(ngModel)]="request.edition"
+                            name="edition" #edition="ngModel" />
+                    </div>
+                    <button type="submit" class="btn brand-btn float-right">
+                        Submit request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

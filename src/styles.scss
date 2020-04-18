@@ -1,13 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "_variables.scss";
+@import "_mixins.scss";
 
 
 .brand-color-table{
-  color: $brand-color-1;
+  @include brand-color-text;
+}
+
+.brand-color-text{
+  @include brand-color-text;
 }
 
 
 .top-offSet{
     margin-top: 70px
+}
+
+.brand-btn {
+  border: 2px solid $brand-color-1 !important;
+  background-color: white !important;
+  border-radius: 12em !important;
+  color: $brand-color-1 !important;
+}
+
+
+.brand-btn:hover {
+  
+  background-color: $brand-color-1 !important;
+  color: white !important;
 }

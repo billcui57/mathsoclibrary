@@ -1,5 +1,5 @@
 <div class="container-fluid text-center top-offSet">
-  <h1 class="display-4">Check out our catalogue!</h1>
+  <h1 class="display-4 brand-color-text">Check out our catalogue!</h1>
   <div class="row">
     <div class="col">
       <div class="input-group">
@@ -28,6 +28,7 @@
       <th>Edition</th>
       <th>Subject</th>
       <th>Count</th>
+      <th></th>
     </thead>
     <tbody>
       <tr *ngFor="let textbook of filteredTextbooks">
@@ -36,6 +37,7 @@
         <td>{{ textbook.edition }}</td>
         <td>{{ textbook.subject }}</td>
         <td>{{ textbook.count }}</td>
+        <td><button type="button" id = "{{textbook.title}}" class="btn brand-btn">Book</button></td>
       </tr>
     </tbody>
   </table>
