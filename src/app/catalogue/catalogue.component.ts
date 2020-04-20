@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Textbook } from '../interfaces/textbook';
 import { TextbooksService } from '../backend/textbooks.service';
 
+
+
+
 @Component({
   selector: 'app-catalogue',
   templateUrl: './catalogue.component.html',
@@ -34,6 +37,9 @@ export class CatalogueComponent implements OnInit {
   }
 
   constructor(private textbookService: TextbooksService) {}
+
+
+
 
   ngOnInit(): void {
     this.textbookService.getTextbooks().subscribe((data) => {

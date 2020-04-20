@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TextbookRequest } from '../interfaces/textbook';
 import { Router } from '@angular/router';
+import { TextbooksService } from '../backend/textbooks.service';
+import { RequestsService } from '../backend/requests.service';
 
 @Component({
   selector: 'app-request',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RequestComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router,private requestService: RequestsService) { }
 
   request = new TextbookRequest("","","");
 
@@ -17,14 +19,14 @@ export class RequestComponent implements OnInit {
 
   requestIsValid(request: TextbookRequest): boolean{
     //TODO: implement
-    return false;
+    return true;
   }
 
   onSubmit(){
     console.log("hello");
     if(this.requestIsValid(this.request)){
       
-
+      this.requestService.createRequests(this.request);
 
 
       this._router.navigateByUrl("/thanks");

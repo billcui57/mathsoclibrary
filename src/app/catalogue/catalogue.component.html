@@ -37,7 +37,7 @@
         <td>{{ textbook.edition }}</td>
         <td>{{ textbook.subject }}</td>
         <td>{{ textbook.count }}</td>
-        <td><button type="button" id = "{{textbook.title}}" class="btn brand-btn">Book</button></td>
+        <td><button type="button" id = "{{textbook.title}}" class="btn brand-btn" routerLink = "/catalogue/{{textbook.title}}">Details</button></td>
       </tr>
     </tbody>
   </table>

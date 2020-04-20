@@ -8,7 +8,7 @@
             <div class="col">
                 <form (ngSubmit)="onSubmit()" #requestForm="ngForm">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1" class="brand-color-text">Book title</label>
+                        <label for="exampleFormControlInput1" class="brand-color-text">Book Title</label>
                         <input type="text" class = "form-control" [ngClass] = "{'is-valid': title.valid, 'is-invalid': title.invalid}"          id="title" required [(ngModel)]="request.title"
                             name="title" #title="ngModel" />
                        
@@ -19,11 +19,11 @@
                             name="author" #author="ngModel" />
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput3" class="brand-color-text">Edition</label>
-                        <input type="text" class="form-control"  [ngClass] = "{'is-valid': edition.valid, 'is-invalid': edition.invalid}" id="edition" required [(ngModel)]="request.edition"
+                        <label for="exampleFormControlInput3" class="brand-color-text">Edition (Optional)</label>
+                        <input type="text" class="form-control"  [ngClass] = "{'is-valid': edition.valid, 'is-invalid': edition.invalid}" id="edition"  [(ngModel)]="request.edition"
                             name="edition" #edition="ngModel" />
                     </div>
-                    <button type="submit" class="btn brand-btn float-right">
+                    <button type="submit" class="btn brand-btn float-right" [disabled]="!requestForm.form.valid">
                         Submit request
                     </button>
                 </form>
