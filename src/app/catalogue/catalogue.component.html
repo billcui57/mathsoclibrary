@@ -25,8 +25,9 @@
     <thead class="brand-color-table">
       <th>Title</th>
       <th>Author</th>
-      <th>Edition</th>
+      <th>Published Year</th>
       <th>Subject</th>
+      <th>ISBN-13</th>
       <th>Count</th>
       <th></th>
     </thead>
@@ -34,8 +35,9 @@
       <tr *ngFor="let textbook of filteredTextbooks">
         <td>{{ textbook.title }}</td>
         <td>{{ textbook.author }}</td>
-        <td>{{ textbook.edition }}</td>
+        <td>{{ textbook.publishedYear }}</td>
         <td>{{ textbook.subject }}</td>
+        <td>{{ textbook.isbn13 }}</td>
         <td>{{ textbook.count }}</td>
         <td><button type="button" id = "{{textbook.title}}" class="btn brand-btn" routerLink = "/catalogue/{{textbook.title}}">Details</button></td>
       </tr>

@@ -1,11 +1,13 @@
 export class TextbookRequest{
     author: string;
-    edition: string;
+    publishedYear: number;
+    isbn13: number;
     title: string;
-    constructor(author: string,edition: string,title: string){
+    constructor(author: string,publishedYear: number,title: string, isbn13: number){
         this.author=author;
-        this.edition=edition;
+        this.publishedYear=publishedYear;
         this.title=title;
+        this.isbn13=isbn13;
     }
 
 }

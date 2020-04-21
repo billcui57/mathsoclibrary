@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TextbookRequest } from '../interfaces/textbook';
+import { TextbookRequest } from '../classes/textbook';
 import { Router } from '@angular/router';
 import { TextbooksService } from '../backend/textbooks.service';
 import { RequestsService } from '../backend/requests.service';
@@ -13,7 +13,7 @@ export class RequestComponent implements OnInit {
 
   constructor(private _router: Router,private requestService: RequestsService) { }
 
-  request = new TextbookRequest("","","");
+  request = new TextbookRequest("",null,"",null);
 
   validRequest:boolean = false;
 

@@ -1,28 +1,34 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Textbook } from '../interfaces/textbook';
+import { Textbook } from '../classes/textbook';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TextbooksService {
 
+  private textbooks: Textbook[];
+
   constructor(private firestore: AngularFirestore) { }
 
-  getTextbooks() {
+
+  setTextbooks(textbooks: Textbook[]) {
+    this.textbooks = textbooks;
+  }
+
+  getTextbooksNew() {
     return this.firestore.collection('catalogue').snapshotChanges();
   }
 
-  createTextbook(textbook: Textbook) {
-    return this.firestore.collection('catalogue').add(textbook);
+  getTextbooksCache(){
+    return this.textbooks || [];
   }
 
-  updateTextbook(textbook: Textbook) {
-    delete textbook.title
-    this.firestore.doc('catalogue/' + textbook.title).update(textbook);
+  
+  hasTextbooks() {
+    return this.textbooks && this.textbooks.length;
   }
 
-  deleteTextbook(textbookName: string){
-    this.firestore.doc('catalogue/' + textbookName).delete();
-}
+
+
 }

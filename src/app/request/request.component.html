@@ -19,9 +19,14 @@
                             name="author" #author="ngModel" />
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput3" class="brand-color-text">Edition (Optional)</label>
-                        <input type="text" class="form-control"  [ngClass] = "{'is-valid': edition.valid, 'is-invalid': edition.invalid}" id="edition"  [(ngModel)]="request.edition"
-                            name="edition" #edition="ngModel" />
+                        <label for="exampleFormControlInput3" class="brand-color-text">ISBN-13</label>
+                        <input type="number" class="form-control" [ngClass] = "{'is-valid': isbn13.valid, 'is-invalid': isbn13.invalid}" id="isbn13" required [(ngModel)]="request.isbn13"
+                            name="isbn13" #isbn13="ngModel" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput4" class="brand-color-text">Published Year (Optional)</label>
+                        <input type="number" class="form-control"  [ngClass] = "{'is-valid': publishedYear.valid, 'is-invalid': publishedYear.invalid}" id="publishedYear"  [(ngModel)]="request.publishedYear"
+                            name="publishedYear" #publishedYear="ngModel" />
                     </div>
                     <button type="submit" class="btn brand-btn float-right" [disabled]="!requestForm.form.valid">
                         Submit request
