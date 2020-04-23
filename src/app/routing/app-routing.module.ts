@@ -5,6 +5,10 @@ import { RequestComponent } from '../request/request.component';
 import { CatalogueComponent } from '../catalogue/catalogue.component';
 import { ThanksComponent } from '../thanks/thanks.component';
 import { TextbookInfoComponent } from '../textbook-info/textbook-info.component';
+import { LoginComponent } from '../login/login.component';
+import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
+import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
+import { LendbookComponent } from '../lendbook/lendbook.component';
 
 
 const routes: Routes = [
@@ -14,11 +18,24 @@ const routes: Routes = [
   {path: "catalogue/:id", component: TextbookInfoComponent},
   {path: "catalogue", component: CatalogueComponent},
   {path: "thanks", component: ThanksComponent},
-  { path: '**', component: WelcomeComponent}
+  {path: 'callback', component: OktaCallbackComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'lend/:id', component: LendbookComponent},
+  {path: 'admin', component: AdminPanelComponent, canActivate: [ OktaAuthGuard ], data: {onAuthRequired},},
+  {path: '**', component: WelcomeComponent},
+ 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
+
 export class AppRoutingModule { }
+
+export function onAuthRequired({ oktaAuth, router }) {
+  // Redirect the user to your custom login page
+  router.navigate(['/login']);
+}

@@ -29,7 +29,10 @@
       <th>Subject</th>
       <th>ISBN-13</th>
       <th>Count</th>
-      <th></th>
+      <th>Details</th>
+      <th *ngIf = "isAuthenticated"></th>
+      <th *ngIf = "isAuthenticated">Admin Controls</th>
+      <th *ngIf = "isAuthenticated"></th>
     </thead>
     <tbody>
       <tr *ngFor="let textbook of filteredTextbooks">
@@ -39,7 +42,10 @@
         <td>{{ textbook.subject }}</td>
         <td>{{ textbook.isbn13 }}</td>
         <td>{{ textbook.count }}</td>
-        <td><button type="button" id = "{{textbook.title}}" class="btn brand-btn" routerLink = "/catalogue/{{textbook.title}}">Details</button></td>
+        <td><button type="button" id = "{{textbook}}" class="btn brand-btn" routerLink = "/catalogue/{{textbook.title}}">Details</button></td>
+        <td *ngIf = "isAuthenticated"><button type="button" id = "{{textbook}}" class="btn brand-btn" *ngIf = "textbook.count > 0" routerLink = "/lend/{{textbook.title}}">Lend</button></td>
+        <td *ngIf = "isAuthenticated"><button type="button" id = "{{textbook}}" class="btn brand-btn"  (click) = "IncBookCount(textbook)">Add</button></td>
+        <td *ngIf = "isAuthenticated"><button type="button" id = "{{textbook}}" class="btn brand-btn"  *ngIf = "textbook.count > 0" (click) = "DecBookCount(textbook)">Remove</button></td>
       </tr>
     </tbody>
   </table>

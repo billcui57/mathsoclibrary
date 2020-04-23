@@ -1,28 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { Lend } from '../classes/lend';
 import { Textbook } from '../classes/textbook';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TextbooksService } from '../backend/textbooks.service';
+import { Student } from '../classes/student';
+import * as moment from 'moment';
+import { LendsService } from '../backend/lends.service';
 
 @Component({
-  selector: 'app-textbook-info',
-  templateUrl: './textbook-info.component.html',
-  styleUrls: ['./textbook-info.component.scss']
+  selector: 'app-lendbook',
+  templateUrl: './lendbook.component.html',
+  styleUrls: ['./lendbook.component.scss']
 })
-export class TextbookInfoComponent implements OnInit {
+export class LendbookComponent implements OnInit {
 
+ 
+  
   textbookLoaded: Promise<boolean>;
   textbooks: Textbook[];
   textbook: Textbook;
+  lendInfo:Lend = new Lend(new Student("","",null),this.textbook,moment().format("MMMM Do YYYY"));
   id: string;
 
   constructor(private _Activatedroute: ActivatedRoute,
     private _router: Router,
-    private _textbookService: TextbooksService) {
+    private _textbookService:TextbooksService,
+    private lendService: LendsService) {
   }
 
   sub;
 
   
+  onSubmit(){
+    console.log(this.lendInfo);
+    this.lendService.createLend(this.lendInfo);
+
+    this._router.navigateByUrl("/catalogue");
+     
+    
+  }
+
+
+
 
   retrieveTextbook() {
     
@@ -39,12 +58,12 @@ export class TextbookInfoComponent implements OnInit {
             id: e.payload.doc.id
           } as Textbook;
         });
-        console.log(this.textbooks);
         this._textbookService.setTextbooks(this.textbooks);
         this.sub = this._Activatedroute.paramMap.subscribe(params => {
           this.id = params.get('id');
           this.textbook = this.textbooks.find(p => p.title == this.id);
           this.textbookLoaded = Promise.resolve(true);
+          this.lendInfo.textbook = this.textbook;
         });
       });
 

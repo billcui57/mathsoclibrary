@@ -9,6 +9,7 @@ export class TextbooksService {
 
   private textbooks: Textbook[];
 
+  
   constructor(private firestore: AngularFirestore) { }
 
 
@@ -29,6 +30,13 @@ export class TextbooksService {
     return this.textbooks && this.textbooks.length;
   }
 
+
+  updateTextbooks(newTextbook:Textbook){
+    
+      return this.firestore.collection("catalogue").doc(newTextbook.id).set({count : newTextbook.count}, {merge : true});
+    
+   
+  }
 
 
 }

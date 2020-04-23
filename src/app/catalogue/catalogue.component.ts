@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Textbook } from '../classes/textbook';
 import { TextbooksService } from '../backend/textbooks.service';
-
-
+import { OktaAuthService } from '@okta/okta-angular';
 
 
 @Component({
@@ -36,7 +35,12 @@ export class CatalogueComponent implements OnInit {
     );
   }
 
-  constructor(private textbookService: TextbooksService) {}
+  isAuthenticated: boolean;
+  constructor(public oktaAuth: OktaAuthService, private textbookService: TextbooksService) {
+    this.oktaAuth.$authenticationState.subscribe(
+      (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
+    );
+  }
 
 
   compare(a:Textbook, b:Textbook ) : number{
@@ -51,14 +55,7 @@ export class CatalogueComponent implements OnInit {
 
 
   retrieveTextbooks(){
-    if(this.textbookService.hasTextbooks()){
-          // this will get the data which was previously stored in the memory
-          // and there will be no HTTP request
-         
-      this.textbooks = this.textbookService.getTextbooksCache();
-      this.filteredTextbooks = this.textbooks;
-    }else{
-  
+   
       this.textbookService.getTextbooksNew().subscribe((data) => {
         this.textbooks = data.map((e) => {
           return {
@@ -68,6 +65,7 @@ export class CatalogueComponent implements OnInit {
             isbn13: e.payload.doc.data()['isbn13'],
             subject: e.payload.doc.data()['subject'],
             count: e.payload.doc.data()['count'],
+            id: e.payload.doc.id
           } as Textbook;
         });
         
@@ -75,14 +73,24 @@ export class CatalogueComponent implements OnInit {
         this.textbookService.setTextbooks(this.textbooks);
         this.filteredTextbooks = this.textbooks;
       });
-    }
+    
   }
 
 
 
-  ngOnInit(): void {
+IncBookCount(textbook: Textbook){
+  this.textbookService.updateTextbooks( new Textbook(textbook.author,textbook.publishedYear,textbook.title,textbook.isbn13,textbook.subject,textbook.count + 1, textbook.id));
+}
+
+DecBookCount(textbook: Textbook){
+  this.textbookService.updateTextbooks(new Textbook(textbook.author,textbook.publishedYear,textbook.title,textbook.isbn13,textbook.subject,textbook.count - 1, textbook.id));
+}
+
+
+
+  async ngOnInit() {
     this.retrieveTextbooks();
-    
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
   }
 
   
