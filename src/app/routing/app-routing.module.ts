@@ -7,8 +7,9 @@ import { ThanksComponent } from '../thanks/thanks.component';
 import { TextbookInfoComponent } from '../textbook-info/textbook-info.component';
 import { LoginComponent } from '../login/login.component';
 import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
-import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
+
 import { LendbookComponent } from '../lendbook/lendbook.component';
+import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
 
 
 const routes: Routes = [

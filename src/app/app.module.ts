@@ -21,14 +21,17 @@ import { ThanksComponent } from './thanks/thanks.component';
 import { TextbookInfoComponent } from './textbook-info/textbook-info.component';
 
 import { LoginComponent } from './login/login.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+
 import { LendbookComponent } from './lendbook/lendbook.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { IsOverduePipe } from './pipes/is-overdue.pipe';
+
 
 
 const oktaConfig = {
   issuer: 'https://dev-634171.okta.com/oauth2/default',
   clientId: '0oaa5uvi8EhfSl40x4x6',
-  redirectUri: 'http://localhost:4200/callback',
+  redirectUri: 'http://mathsoclibrary.herokuapp.com/callback',
   pkce: true
 }
 
@@ -44,6 +47,8 @@ const oktaConfig = {
     LoginComponent,
     AdminPanelComponent,
     LendbookComponent,
+    IsOverduePipe,
+
  
   ],
   imports: [

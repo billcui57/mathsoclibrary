@@ -71,7 +71,9 @@ export class CatalogueComponent implements OnInit {
         
         this.textbooks.sort(this.compare );
         this.textbookService.setTextbooks(this.textbooks);
-        this.filteredTextbooks = this.textbooks;
+        this.filteredTextbooks = this.listFilter
+      ? this.performFilter(this.listFilter)
+      : this.textbooks;
       });
     
   }
