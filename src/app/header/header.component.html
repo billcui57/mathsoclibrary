@@ -4,8 +4,7 @@
     MathSoc Textbook Library
   </a>
   <link href="https://global.oktacdn.com/okta-signin-widget/3.1.3/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
-  <button class="btn brand-btn my-2 my-sm-0" *ngIf = "!isAuthenticated" routerLink = "/login">Login</button>
-  <button class="btn brand-btn my-2 my-sm-0" *ngIf = "isAuthenticated" (click) = "logout()">Logout</button>
+ 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -26,7 +25,8 @@
         <a class="nav-link" *ngIf = "isAuthenticated" routerLink = "/admin">Admin Panel</a>
       </li>
     </ul>
-    
+    <button class="btn brand-btn my-2 my-sm-0" *ngIf = "!isAuthenticated" routerLink = "/login">Login</button>
+    <button class="btn brand-btn my-2 my-sm-0" *ngIf = "isAuthenticated" (click) = "logout()">Logout</button>
   </div>
  
 </nav>
