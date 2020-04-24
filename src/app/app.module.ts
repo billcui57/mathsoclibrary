@@ -30,8 +30,8 @@ import { IsOverduePipe } from './pipes/is-overdue.pipe';
 
 const oktaConfig = {
   issuer: 'https://dev-634171.okta.com/oauth2/default',
-  clientId: '0oaa5uvi8EhfSl40x4x6',
-  redirectUri: 'http://mathsoclibrary.herokuapp.com/callback',
+  clientId: '0oaaenlguTQO8nQWc4x6',
+  redirectUri: 'http://localhost:4200/callback',
   pkce: true
 }
 
