@@ -4,6 +4,12 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+// polyfill TextEncoder for IE Edge
+import { TextEncoder } from 'text-encoding';
+if (typeof (window as any).TextEncoder === 'undefined') {
+  (window as any).TextEncoder = TextEncoder;
+}
+
 if (environment.production) {
   enableProdMode();
 }
