@@ -20,6 +20,7 @@
             "outputPath": "dist/mathsoclibrary",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "crossOrigin": "use-credentials",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
