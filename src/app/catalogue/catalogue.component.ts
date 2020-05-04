@@ -81,11 +81,11 @@ export class CatalogueComponent implements OnInit {
 
 
 IncBookCount(textbook: Textbook){
-  this.textbookService.updateTextbooks( new Textbook(textbook.author,textbook.publishedYear,textbook.title,textbook.isbn13,textbook.subject,textbook.count + 1, textbook.id));
+  this.textbookService.incrementTextbookCount(textbook);
 }
 
 DecBookCount(textbook: Textbook){
-  this.textbookService.updateTextbooks(new Textbook(textbook.author,textbook.publishedYear,textbook.title,textbook.isbn13,textbook.subject,textbook.count - 1, textbook.id));
+  this.textbookService.decrementTextbookCount(textbook);
 }
 
 

@@ -10,6 +10,8 @@ import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
 
 import { LendbookComponent } from '../lendbook/lendbook.component';
 import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
+import { HistoryComponent } from '../history/history.component';
+import { LendStatusComponent } from '../lend-status/lend-status.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'lend/:id', component: LendbookComponent},
   {path: 'admin', component: AdminPanelComponent, canActivate: [ OktaAuthGuard ], data: {onAuthRequired},},
+  {path: 'admin/history', component: HistoryComponent, canActivate: [ OktaAuthGuard ], data: {onAuthRequired},},
+  {path: 'admin/active-lends', component: LendStatusComponent, canActivate: [ OktaAuthGuard ], data: {onAuthRequired},},
   {path: '**', component: WelcomeComponent},
  
 ];

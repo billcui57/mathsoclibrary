@@ -21,7 +21,7 @@ exports.sendEmail = functions.firestore
 
         const mailOptions = {
             from: `mathsoclibrary@gmail.com`,
-            to: 'billcui0227@gmail.com',
+            to: 'textbook_director@mathsoc.uwaterloo.ca',
             subject: 'A new textbook has been requested!',
             html: `<h1>${snap.data().title} by ${snap.data().author}${snap.data().publishedYear? `, published in ${snap.data().publishedYear}` : ``}${snap.data().isbn13? `, ISBN-13:${snap.data().isbn13}` : ``} </h1>`
         };

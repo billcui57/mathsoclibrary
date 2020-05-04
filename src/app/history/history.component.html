@@ -1,0 +1,56 @@
+<div class="container-fluid text-center top-offSet">
+    <h1 class="display-4 brand-color-text ">History</h1>
+    <div class="row">
+        <div class="col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm"
+                >Filter by title, author, subject, ISBN-13, first name, last name, student ID, or date lent</span
+              >
+            </div>
+            <input
+              type="text"
+              [(ngModel)]="listFilter"
+              class="form-control"
+              aria-label="Small"
+              aria-describedby="inputGroup-sizing-sm"
+            />
+          </div>
+        </div>
+        <div class = "col"></div>
+        <div class = "col"></div>
+      </div>
+      <div class="row mt-3"></div>
+    <table class="table">
+        <thead class="brand-color-table">
+          <th>Title</th>
+          <th>Author</th>
+          <th>Published Year</th>
+          <th>Subject</th>
+          <th>ISBN-13</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Student ID</th>
+          <th>Date Lent</th>
+          
+        </thead>
+        <tbody>
+          <tr *ngFor="let lend of filteredLends">
+            <td>{{ lend.textbook.title }}</td>
+            <td>{{ lend.textbook.author }}</td>
+            <td>{{ lend.textbook.publishedYear }}</td>
+            <td>{{ lend.textbook.subject }}</td>
+            <td>{{ lend.textbook.isbn13 }}</td>
+            <td>{{ lend.student.firstName }}</td>
+            <td>{{ lend.student.lastName }}</td>
+            <td>{{ lend.student.studentID }}</td>
+            <td>{{ lend.dateLent}}</td>
+          
+            
+         </tr>
+        </tbody>
+      </table>
+ 
+
+  </div>
+  

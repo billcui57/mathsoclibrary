@@ -6,6 +6,7 @@ import { TextbooksService } from '../backend/textbooks.service';
 import { Student } from '../classes/student';
 import * as moment from 'moment';
 import { LendsService } from '../backend/lends.service';
+import { RecordsService } from '../backend/records.service';
 
 @Component({
   selector: 'app-lendbook',
@@ -25,7 +26,8 @@ export class LendbookComponent implements OnInit {
   constructor(private _Activatedroute: ActivatedRoute,
     private _router: Router,
     private _textbookService: TextbooksService,
-    private lendService: LendsService) {
+    private lendService: LendsService,
+    private recordService: RecordsService) {
   }
 
   sub;
@@ -35,7 +37,7 @@ export class LendbookComponent implements OnInit {
     if (this.lendInfo.textbook.count > 0) {
       this.textbook.count--;
       this.lendService.createLend(this.lendInfo);
-      
+      this.recordService.createRecord(this.lendInfo);
       this._textbookService.updateTextbooks(this.textbook);
       this._router.navigateByUrl("/catalogue");
     }
