@@ -7,8 +7,6 @@ import { environment } from '../environments/environment';
 import {
   OKTA_CONFIG,
   OktaAuthModule,
-  OktaCallbackComponent,
-  OktaAuthGuard
 } from '@okta/okta-angular';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';

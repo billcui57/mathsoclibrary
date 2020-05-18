@@ -10,16 +10,16 @@ export class LendsService {
   constructor(private firestore: AngularFirestore) { }
 
 
-  getLends(){
+  getLends() {
     return this.firestore.collection('lends').snapshotChanges();
   }
 
-  createLend(lend: Lend){
+  createLend(lend: Lend) {
     return this.firestore.collection('lends').add(JSON.parse(JSON.stringify(lend)));
   }
 
-  deleteLend(lend: Lend){
-     this.firestore.collection('lends').doc(lend.id).delete();
+  deleteLend(lend: Lend) {
+    this.firestore.collection('lends').doc(lend.id).delete();
   }
-  
+
 }

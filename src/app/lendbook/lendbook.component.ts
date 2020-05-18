@@ -35,10 +35,10 @@ export class LendbookComponent implements OnInit {
 
   onSubmit() {
     if (this.lendInfo.textbook.count > 0) {
-     this._textbookService.decrementTextbookCount(this.lendInfo.textbook)
+      this._textbookService.decrementTextbookCount(this.lendInfo.textbook)
       this.lendService.createLend(this.lendInfo);
       this.recordService.createRecord(this.lendInfo);
-      
+
       this._router.navigateByUrl("/catalogue");
     }
 

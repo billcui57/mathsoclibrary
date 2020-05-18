@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Textbook } from '../classes/textbook';
-import { TextbooksService } from '../backend/textbooks.service';
 import { OktaAuthService } from '@okta/okta-angular';
+import { TextbooksService } from '../backend/textbooks.service';
+import { Textbook } from '../classes/textbook';
 
 
 @Component({

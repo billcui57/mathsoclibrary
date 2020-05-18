@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { WelcomeComponent } from '../welcome/welcome.component';
-import { RequestComponent } from '../request/request.component';
-import { CatalogueComponent } from '../catalogue/catalogue.component';
-import { ThanksComponent } from '../thanks/thanks.component';
-import { TextbookInfoComponent } from '../textbook-info/textbook-info.component';
-import { LoginComponent } from '../login/login.component';
-import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
-
-import { LendbookComponent } from '../lendbook/lendbook.component';
+import { RouterModule, Routes } from '@angular/router';
+import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
 import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
+import { CatalogueComponent } from '../catalogue/catalogue.component';
 import { HistoryComponent } from '../history/history.component';
 import { LendStatusComponent } from '../lend-status/lend-status.component';
+import { LendbookComponent } from '../lendbook/lendbook.component';
+import { LoginComponent } from '../login/login.component';
+import { RequestComponent } from '../request/request.component';
+import { TextbookInfoComponent } from '../textbook-info/textbook-info.component';
+import { ThanksComponent } from '../thanks/thanks.component';
+import { WelcomeComponent } from '../welcome/welcome.component';
+
 
 
 const routes: Routes = [
