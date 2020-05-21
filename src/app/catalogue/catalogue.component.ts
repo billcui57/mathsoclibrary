@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 import { TextbooksService } from '../backend/textbooks.service';
-import { Textbook } from '../classes/textbook';
+import { Textbook } from '../models/textbook';
 
 
 @Component({
@@ -38,55 +38,45 @@ export class CatalogueComponent implements OnInit {
   isAuthenticated: boolean;
   constructor(public oktaAuth: OktaAuthService, private textbookService: TextbooksService) {
     this.oktaAuth.$authenticationState.subscribe(
-      (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
+      (isAuthenticated: boolean) => this.isAuthenticated = isAuthenticated
     );
   }
 
 
-  compare(a:Textbook, b:Textbook ) : number{
-    if ( a.title < b.title ){
+  compare(a: Textbook, b: Textbook): number {
+    if (a.title < b.title) {
       return -1;
     }
-    if ( a.title > b.title ){
+    if (a.title > b.title) {
       return 1;
     }
     return 0;
   }
 
 
-  retrieveTextbooks(){
-   
-      this.textbookService.getTextbooksNew().subscribe((data) => {
-        this.textbooks = data.map((e) => {
-          return {
-            title: e.payload.doc.data()['title'],
-            author: e.payload.doc.data()['author'],
-            publishedYear: e.payload.doc.data()['publishedYear'],
-            isbn13: e.payload.doc.data()['isbn13'],
-            subject: e.payload.doc.data()['subject'],
-            count: e.payload.doc.data()['count'],
-            id: e.payload.doc.id
-          } as Textbook;
-        });
-        
-        this.textbooks.sort(this.compare );
-        this.textbookService.setTextbooks(this.textbooks);
+  retrieveTextbooks() {
+    this.textbookService.getTextbooks().subscribe(
+      (data: Textbook[]) => {
+        this.textbooks = data
+        this.textbooks.sort(this.compare);
         this.filteredTextbooks = this.listFilter
-      ? this.performFilter(this.listFilter)
-      : this.textbooks;
-      });
-    
+          ? this.performFilter(this.listFilter)
+          : this.textbooks;
+      },
+      (err: any) => console.log(err))
   }
 
 
 
-IncBookCount(textbook: Textbook){
-  this.textbookService.incrementTextbookCount(textbook);
-}
+  IncBookCount(textbookId: Number) {
+    this.textbookService.incrementTextbookCount(textbookId).subscribe();
+    window.location.reload();
+  }
 
-DecBookCount(textbook: Textbook){
-  this.textbookService.decrementTextbookCount(textbook);
-}
+  DecBookCount(textbookId: Number) {
+    this.textbookService.decrementTextbookCount(textbookId).subscribe();
+    window.location.reload();
+  }
 
 
 
@@ -95,5 +85,5 @@ DecBookCount(textbook: Textbook){
     this.isAuthenticated = await this.oktaAuth.isAuthenticated();
   }
 
-  
+
 }

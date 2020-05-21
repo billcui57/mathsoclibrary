@@ -7,5 +7,7 @@ export const environment = {
     projectId: "mathsoclibrary",
     storageBucket: "mathsoclibrary.appspot.com",
     messagingSenderId: "131028391526",
-  }
+  },
+  redirectUrl: 'https://mathsoclibrary.herokuapp.com/callback',
+  apiUrl: 'http://localhost:3000',
 };

@@ -1,46 +1,29 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Textbook } from '../classes/textbook';
-import * as firebase from 'firebase/app';
+import { Textbook } from '../models/textbook';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class TextbooksService {
 
-  private textbooks: Textbook[];
+  constructor(private http: HttpClient) { }
 
-
-  constructor(private firestore: AngularFirestore) { }
-
-
-  setTextbooks(textbooks: Textbook[]) {
-    this.textbooks = textbooks;
+  getTextbooks() :Observable<Textbook[]> {
+    return this.http.get<Textbook[]>(`${environment.apiUrl}/catalogue`);
   }
 
-  getTextbooksNew() {
-    return this.firestore.collection('catalogue').snapshotChanges();
+  getTextbookById(textbookId: Number) {
+    return this.http.get<Textbook>(`${environment.apiUrl}/catalogue/${textbookId}`);
   }
 
-  getTextbooksCache() {
-    return this.textbooks || [];
+  incrementTextbookCount (textbookId: Number):Observable<void>{
+    return this.http.patch<void>(`${environment.apiUrl}/catalogue/${textbookId}`, { "op": "increment_count"});
   }
 
-
-  hasTextbooks() {
-    return this.textbooks && this.textbooks.length;
+  decrementTextbookCount (textbookId: Number):Observable<void>{
+    return this.http.patch<void>(`${environment.apiUrl}/catalogue/${textbookId}`, { "op": "decrement_count"});
   }
-
-  incrementTextbookCount(textbook: Textbook) {
-    this.firestore.collection('catalogue').doc(textbook.id).update({count: firebase.firestore.FieldValue.increment(1)})
-  }
-
-  decrementTextbookCount(textbook: Textbook) {
-    this.firestore.collection('catalogue').doc(textbook.id).update({count: firebase.firestore.FieldValue.increment(-1)})
-  }
-
-  updateTextbooks(newTextbook: Textbook) {
-    return this.firestore.collection("catalogue").doc(newTextbook.id).set({ count: newTextbook.count }, { merge: true });
-  }
-
 
 }

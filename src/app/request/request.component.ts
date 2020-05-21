@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TextbookRequest } from '../classes/textbook';
+import { TextbookRequest } from '../models/textbook';
 import { Router } from '@angular/router';
 import { TextbooksService } from '../backend/textbooks.service';
 import { RequestsService } from '../backend/requests.service';

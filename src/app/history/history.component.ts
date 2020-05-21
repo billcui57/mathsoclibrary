@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 import { LendsService } from '../backend/lends.service';
-import { Lend } from '../classes/lend';
-import { RecordsService } from '../backend/records.service';
+import { Lend } from '../models/lend';
 
 @Component({
   selector: 'app-history',
@@ -12,7 +11,7 @@ import { RecordsService } from '../backend/records.service';
 export class HistoryComponent implements OnInit {
 
   isAuthenticated: boolean;
-  constructor(public oktaAuth: OktaAuthService, private recordsService: RecordsService) {
+  constructor(public oktaAuth: OktaAuthService, private lendsService: LendsService) {
     this.oktaAuth.$authenticationState.subscribe(
       (isAuthenticated: boolean) => this.isAuthenticated = isAuthenticated
     );
@@ -41,7 +40,7 @@ export class HistoryComponent implements OnInit {
         lend.dateLent.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
         lend.student.firstName.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
         lend.student.lastName.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
-        lend.student.studentID.toString().indexOf(filterBy) !== -1 ||
+        lend.student.id.toString().indexOf(filterBy) !== -1 ||
         lend.textbook.title.toLocaleLowerCase().toString().indexOf(filterBy) !== -1 ||
         lend.textbook.author.toLocaleLowerCase().toString().indexOf(filterBy) !== -1 ||
         lend.textbook.subject.toLocaleLowerCase().toString().indexOf(filterBy) !== -1 ||
@@ -60,29 +59,18 @@ export class HistoryComponent implements OnInit {
     return 0;
   }
 
-
-
-
-
   lends: Lend[];
 
   retrieveLends() {
-    this.recordsService.getRecords().subscribe((data) => {
-      this.lends = data.map((e) => {
-        return {
-          textbook: e.payload.doc.data()['textbook'],
-          student: e.payload.doc.data()['student'],
-          dateLent: e.payload.doc.data()['dateLent'],
-          id: e.payload.doc.id
-        } as Lend;
-      });
-      this.lends.sort(this.compare);
-      this.filteredLends = this.listFilter
+    this.lendsService.getLends().subscribe(
+      (data) => {
+        this.lends = data;
+        this.lends.sort(this.compare);
+        this.filteredLends = this.listFilter
         ? this.performFilter(this.listFilter)
         : this.lends;
-
-    })
-
+      }
+    )
   }
 
   async ngOnInit() {

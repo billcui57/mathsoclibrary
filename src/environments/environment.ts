@@ -11,7 +11,9 @@ export const environment = {
     projectId: "mathsoclibrary",
     storageBucket: "mathsoclibrary.appspot.com",
     messagingSenderId: "131028391526",
-  }
+  },
+  redirectUrl: 'http://localhost:4200/callback',
+  apiUrl: 'http://localhost:3000',
 };
 
 /*

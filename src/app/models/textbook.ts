@@ -18,9 +18,9 @@ export class TextbookRequest{
 export class Textbook extends TextbookRequest {
     subject: string;
     count: number;
-    id: string;
+    id: number;
 
-    constructor(author: string,publishedYear: number,title: string, isbn13: number, subject: string, count: number, id: string){
+    constructor(author: string,publishedYear: number,title: string, isbn13: number, subject: string, count: number, id: number){
         
         super(author,publishedYear,title, isbn13);
         this.subject = subject;

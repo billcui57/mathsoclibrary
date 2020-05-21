@@ -31,8 +31,7 @@ import { LendStatusComponent } from './lend-status/lend-status.component';
 const oktaConfig = {
   issuer: 'https://dev-634171.okta.com/oauth2/default',
   clientId: '0oaaenlguTQO8nQWc4x6',
-  //redirectUri: 'http://localhost:4200/callback',
-  redirectUri: 'https://mathsoclibrary.herokuapp.com/callback',
+  redirectUri: environment.redirectUrl,
   pkce: true
 }
 
@@ -67,5 +66,6 @@ const oktaConfig = {
   providers: [{ provide: OKTA_CONFIG, useValue: oktaConfig }],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
 

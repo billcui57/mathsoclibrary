@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Lend } from '../classes/lend';
+import { Lend } from '../models/lend';
 import * as moment from 'moment';
 
 @Pipe({
