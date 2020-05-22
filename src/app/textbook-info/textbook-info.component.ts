@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Textbook } from '../models/textbook';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TextbooksService } from '../backend/textbooks.service';
+import { TextbooksService } from '../services/textbooks.service';
 
 @Component({
   selector: 'app-textbook-info',

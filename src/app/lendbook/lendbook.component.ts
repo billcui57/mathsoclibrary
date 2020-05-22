@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Lend } from '../models/lend';
 import { Textbook } from '../models/textbook';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TextbooksService } from '../backend/textbooks.service';
+import { TextbooksService } from '../services/textbooks.service';
 import { Student } from '../models/student';
 import * as moment from 'moment';
-import { LendsService } from '../backend/lends.service';
+import { LendsService } from '../services/lends.service';
 
 @Component({
   selector: 'app-lendbook',

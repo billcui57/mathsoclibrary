@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TextbookRequest } from '../models/textbook';
 import { Router } from '@angular/router';
-import { TextbooksService } from '../backend/textbooks.service';
-import { RequestsService } from '../backend/requests.service';
+import { TextbooksService } from '../services/textbooks.service';
+import { RequestsService } from '../services/requests.service';
 
 @Component({
   selector: 'app-request',
@@ -23,10 +23,9 @@ export class RequestComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("hello");
     if(this.requestIsValid(this.request)){
       
-      this.requestService.createRequests(this.request);
+      this.requestService.createRequests(this.request).subscribe();
 
 
       this._router.navigateByUrl("/thanks");

@@ -32,7 +32,7 @@ export class LendsService {
   }
 
   changeLendToInactive(lendId: number) {
-    
+    return this.http.patch<void>(`${environment.apiUrl}/lends/${lendId}`, {"op": "set_inactive"});
   }
 
 

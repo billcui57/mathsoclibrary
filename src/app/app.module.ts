@@ -50,8 +50,6 @@ const oktaConfig = {
     IsOverduePipe,
     HistoryComponent,
     LendStatusComponent,
-
- 
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

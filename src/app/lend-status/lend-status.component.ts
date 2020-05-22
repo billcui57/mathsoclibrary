@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
-import { LendsService } from '../backend/lends.service';
+import { LendsService } from '../services/lends.service';
 import { Lend } from '../models/lend';
-import { TextbooksService } from '../backend/textbooks.service';
+import { TextbooksService } from '../services/textbooks.service';
 
 @Component({
   selector: 'app-lend-status',
@@ -50,7 +50,7 @@ export class LendStatusComponent implements OnInit {
 
   returnTextbook(lend: Lend) {
     this.textbookService.incrementTextbookCount(lend.textbook.id).subscribe();
-    this.lendsService.deleteLend(lend.id).subscribe();
+    this.lendsService.changeLendToInactive(lend.id).subscribe();
     window.location.reload();
   }
 
@@ -77,6 +77,9 @@ export class LendStatusComponent implements OnInit {
         this.lends = data;
         console.log(this.lends)
         this.lends.sort(this.compare);
+        this.lends = this.lends.filter(
+          (lend) => lend.active 
+        )
         this.filteredLends = this.listFilter
           ? this.performFilter(this.listFilter)
           : this.lends;

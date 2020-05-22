@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
-import { LendsService } from '../backend/lends.service';
+import { LendsService } from '../services/lends.service';
 import { Lend } from '../models/lend';
 
 @Component({
@@ -66,6 +66,9 @@ export class HistoryComponent implements OnInit {
       (data) => {
         this.lends = data;
         this.lends.sort(this.compare);
+        this.lends = this.lends.filter(
+          (lend) => !lend.active
+        )
         this.filteredLends = this.listFilter
         ? this.performFilter(this.listFilter)
         : this.lends;
