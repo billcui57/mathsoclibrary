@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import {
   OKTA_CONFIG,
@@ -52,8 +50,6 @@ const oktaConfig = {
     LendStatusComponent,
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -61,7 +57,9 @@ const oktaConfig = {
     OktaAuthModule,
     
   ],
-  providers: [{ provide: OKTA_CONFIG, useValue: oktaConfig }],
+  providers: [
+    { provide: OKTA_CONFIG, useValue: oktaConfig },
+  ],
   bootstrap: [AppComponent]
 })
 

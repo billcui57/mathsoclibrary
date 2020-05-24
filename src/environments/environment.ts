@@ -4,14 +4,6 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: "AIzaSyBAGX6CXQG8DodCL-AB_ck-HssTGhm6PFA",
-    authDomain: "mathsoclibrary.firebaseapp.com",
-    databaseURL: "https://mathsoclibrary.firebaseio.com",
-    projectId: "mathsoclibrary",
-    storageBucket: "mathsoclibrary.appspot.com",
-    messagingSenderId: "131028391526",
-  },
   redirectUrl: 'http://localhost:4200/callback',
   apiUrl: 'http://localhost:3000',
 };

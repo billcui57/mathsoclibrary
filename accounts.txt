@@ -1,7 +1,6 @@
-All accounts (gmail, heroku, firebase) for this website are registered under mathsoclibrary@gmail.com
+All accounts (gmail, heroku) for this website are registered under mathsoclibrary@gmail.com
 
 Passwords:
-	Firebase,gmail: piisirrational
 	Heroku: piisirrational3.14
 	Okta: Piisirrational314
 		Security question: Loo Loo Loo

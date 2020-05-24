@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mathsoclibrary": {
+    "mathsoclibrary-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mathsoclibrary",
+            "outputPath": "dist/mathsoclibrary-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "crossOrigin": "use-credentials",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mathsoclibrary:build"
+            "browserTarget": "mathsoclibrary-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mathsoclibrary:build:production"
+              "browserTarget": "mathsoclibrary-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mathsoclibrary:build"
+            "browserTarget": "mathsoclibrary-frontend:build"
           }
         },
         "test": {
@@ -109,11 +109,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "mathsoclibrary:serve"
+            "devServerTarget": "mathsoclibrary-frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "mathsoclibrary:serve:production"
+              "devServerTarget": "mathsoclibrary-frontend:serve:production"
             }
           }
         }

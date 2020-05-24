@@ -1,6 +1,5 @@
-# mathsoclibrary
-This is an angular app for the frontend of the textbook library's website. Currently it uses Firebase Firestore as a backend/database
-to store everything. I would like to change that so I can currently working on making a RESTful backend API using mySQL.
+# mathsoclibrary-frontend
+This is an angular app for the frontend of the textbook library's website.
 
 Everything is containerized in this angular app. For example, to access the html/css of the header just go to src/app/header
 To access the code that allows for the app to communicate with backend and retrieve info from database, refer to src/app/backend and see the .service.ts files (note the .ts.spec files are for testing)
